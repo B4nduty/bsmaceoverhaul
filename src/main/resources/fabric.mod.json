@@ -1,0 +1,29 @@
+{
+	"schemaVersion": 1,
+	"id": "bsmaceoverhaul",
+	"version": "${version}",
+	"name": "BsMaceOverhaul",
+	"description": "",
+	"authors": [],
+	"contact": {},
+	"license": "All-Rights-Reserved",
+	"icon": "assets/bsmaceoverhaul/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"banduty.bsmaceoverhaul.BsMaceOverhaul"
+		]
+	},
+	"mixins": [
+		"bsmaceoverhaul.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.5",
+		"minecraft": ">=1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
