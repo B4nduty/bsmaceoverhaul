@@ -16,14 +16,14 @@ public class MaceMixin {
     public void getBonusAttackDamage(Entity target, float baseAttackDamage, DamageSource damageSource, CallbackInfoReturnable<Float> cir) {
         Entity entity = damageSource.getSource();
         float bonusDamageMultiplier = 0;
-        if (entity instanceof PlayerEntity player) {
-            for (ItemStack itemStack : player.getInventory().main) {
+        if (target instanceof PlayerEntity targetPlayerEntity && targetPlayerEntity.getInventory().getArmorStack(3).getItem() != null) {
+            cir.setReturnValue(0F);
+        }
+        if (entity instanceof PlayerEntity attackerPlayerEntity) {
+            for (ItemStack itemStack : attackerPlayerEntity.getInventory().main) {
                 bonusDamageMultiplier += itemStack.getCount();
             }
-            if (bonusDamageMultiplier <= 1) {
-                bonusDamageMultiplier = 2000;
-            }
         }
-        cir.setReturnValue(cir.getReturnValue() * (bonusDamageMultiplier / 2000));
+        cir.setReturnValue(cir.getReturnValue() + (bonusDamageMultiplier / 100));
     }
 }
